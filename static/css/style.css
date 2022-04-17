@@ -1,7 +1,11 @@
 h1 {
 	font-family: 'Helvetica', 'Arial', sans-serif;
-    border: 2px black solid;
     color: black;
     text-align: center;
     padding: 10px;
+}
+
+.container {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+    border: 2px black solid;
 }
