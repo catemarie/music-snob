@@ -1,12 +1,7 @@
-import sqlite3
 from flask import Flask, render_template
 import sys
 import logging
 
-def get_db_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
 
 app = Flask(__name__)
 
@@ -19,7 +14,11 @@ def about():
 
 @app.route('/')
 def index():
-    conn = get_db_connection()
-    events = conn.execute('SELECT * FROM events').fetchall()
-    conn.close()
+    event1 = {}
+    event1['title'] = 'Event 1'
+    event1['content'] = 'First event'
+    event2 = {}
+    event2['title'] = 'Event 2'
+    event2['content'] = 'Second event'
+    events = [event1, event2]
     return render_template('index.html', events=events)
