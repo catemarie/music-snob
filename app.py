@@ -1,5 +1,7 @@
 import sqlite3
 from flask import Flask, render_template
+import sys
+import logging
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -8,10 +10,12 @@ def get_db_connection():
 
 app = Flask(__name__)
 
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 @app.route('/')
 def index():
