@@ -8,6 +8,11 @@ def get_db_connection():
 
 app = Flask(__name__)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 @app.route('/')
 def index():
     conn = get_db_connection()
